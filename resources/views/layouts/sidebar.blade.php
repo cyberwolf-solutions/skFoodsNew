@@ -313,7 +313,12 @@
                                             Reports</a>
                                     </li>
                                 @endcan
-
+                                @can('manage report')
+                                <li class="nav-item">
+                                    <a href="{{ route('final') }}" class="nav-link">profit and loss
+                                        Reports</a>
+                                </li>
+                            @endcan
                             </ul>
                         </div>
                     </li>

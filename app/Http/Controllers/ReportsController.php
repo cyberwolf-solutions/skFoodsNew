@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderPayment;
 use App\Models\Stock;
 use App\Models\User;
 use App\Models\Booking;
@@ -117,7 +118,131 @@ class ReportsController extends Controller
         $data = Order::all();
         return view('reports.orderindex', compact('title', 'breadcrumbs', 'data'));
     }
+    public function final(Request $request)
+    {
+        $title = 'Final Report';
 
+        $breadcrumbs = [
+            ['label' => $title, 'url' => '', 'active' => true],
+        ];
+
+        $fromDate = $request->input('from_date');
+        $toDate = $request->input('to_date');
+
+        // $order = Order::whereBetween('created_at', [$fromDate, $toDate])->get();
+        // $checkincheckout = checkincheckout::whereBetween('checkin', [$fromDate, $toDate])->get();
+        // $ingredients = Purchases::whereBetween('date', [$fromDate, $toDate])->get();
+        // $inventory = OtherPurchase::whereBetween('date', [$fromDate, $toDate])->get();
+        if ($fromDate && $toDate) {
+            $order = Order::whereBetween('created_at', [$fromDate, $toDate])->get();
+            // $checkincheckout = checkincheckout::whereBetween('checkin', [$fromDate, $toDate])->get();
+            $ingredients = Purchases::whereBetween('date', [$fromDate, $toDate])->get();
+            // $inventory = OtherPurchase::whereBetween('date', [$fromDate, $toDate])->get();
+        } else {
+            $order = Order::all();
+            $orderpay = OrderPayment::all();
+            // $checkincheckout = checkincheckout::all();
+            $ingredients = Purchases::all();
+            // $inventory = OtherPurchase::all();
+        }
+
+        $ingredientsTotal = $ingredients->sum('total');
+        $orderTotal = $orderpay->sum('total');
+        // $inventoryTotal = $inventory->sum('total');
+
+        $sumsByCurrency = [
+            'USD' => 0,
+            'EUR' => 0,
+            'LKR' => 0,
+        ];
+
+
+        // foreach ($checkincheckout as $transaction) {
+        //     $currency = Customer::find($transaction->customer_id)->currency->name;
+        //     switch ($currency) {
+        //         case 'USD':
+        //             $sumsByCurrency['USD'] += $transaction->total_amount;
+        //             break;
+        //         case 'EUR':
+        //             $sumsByCurrency['EUR'] += $transaction->total_amount;
+        //             break;
+        //         case 'LKR':
+        //             $sumsByCurrency['LKR'] += $transaction->total_amount;
+        //             break;
+        //         default:
+
+        //             break;
+        //     }
+        // }
+
+        $sumsByCurrency1 = [
+            'USD' => 0,
+            'EUR' => 0,
+            'LKR' => 0,
+        ];
+
+
+
+
+        // foreach ($order as $ord) {
+        //     $currency = Customer::find($ord->customer_id)->currency->name;
+        //     switch ($currency) {
+        //         case 'USD':
+        //             $sumsByCurrency1['USD'] += $ord->payment->total;
+        //             break;
+        //         case 'EUR':
+        //             $sumsByCurrency1['EUR'] += $ord->payment->total;
+        //             break;
+        //         case 'LKR':
+        //             $sumsByCurrency1['LKR'] += $ord->payment->total;
+        //             break;
+        //         default:
+
+        //             break;
+        //     }
+        // }
+
+        $sumsByCurrency2 = [
+            'USD' => 0,
+            'EUR' => 0,
+            'LKR' => 0,
+        ];
+
+        // foreach ($checkincheckout as $transaction) {
+        //     $currency = Customer::find($transaction->customer_id)->currency->name;
+        //     switch ($currency) {
+        //         case 'USD':
+        //             $additionalServices = json_decode($transaction->additional_services, true);
+        //             if (!empty($additionalServices)) {
+        //                 foreach ($additionalServices as $service) {
+        //                     $sumsByCurrency2['USD'] += $service['price'];
+        //                 }
+        //             }
+        //             break;
+        //         case 'EUR':
+        //             $additionalServices = json_decode($transaction->additional_services, true);
+        //             if (!empty($additionalServices)) {
+        //                 foreach ($additionalServices as $service) {
+        //                     $sumsByCurrency2['EUR'] += $service['price'];
+        //                 }
+        //             }
+        //             break;
+        //         case 'LKR':
+        //             $additionalServices = json_decode($transaction->additional_services, true);
+        //             if (!empty($additionalServices)) {
+        //                 foreach ($additionalServices as $service) {
+        //                     $sumsByCurrency2['LKR'] += $service['price'];
+        //                 }
+        //             }
+        //             break;
+        //         default:
+
+        //             break;
+        //     }
+        // }
+
+        return view('reports.all', compact('title', 'breadcrumbs', 'order', 'orderTotal','ingredients', 'ingredientsTotal'));
+    }
     public function stockreport()
     {
         $title = 'Stock Report';
