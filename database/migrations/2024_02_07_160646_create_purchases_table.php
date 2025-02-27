@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->float('vat_amount')->nullable();
             $table->float('discount')->nullable();
             $table->float('total')->default(0);
+            $table->float('status')->default(0);
             $table->enum('payment_status', ['Unpaid', 'Partially Paid', 'Paid'])->default('Unpaid');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

@@ -22,7 +22,8 @@ class Purchases extends Model {
         'payment_status',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
+        'status'
     ];
     public function supplier() {
         return $this->hasOne(Supplier::class, 'id', 'supplier_id');

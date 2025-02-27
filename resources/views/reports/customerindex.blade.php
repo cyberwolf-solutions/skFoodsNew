@@ -128,7 +128,7 @@
                 printWindow.document.write(
                     '<img src="{{ asset('storage/' . $settings->logo_dark) }}" class="logo img-fluid">'
                     );
-                printWindow.document.write('<div class="resort-name">Thimbiri Wewa Resort</div>');
+                printWindow.document.write('<div class="resort-name">SK foods</div>');
                 printWindow.document.write('<hr>');
                 // printWindow.document.write('<h4>Users Report</h4>');
                 printWindow.document.write(document.getElementById('example').outerHTML);

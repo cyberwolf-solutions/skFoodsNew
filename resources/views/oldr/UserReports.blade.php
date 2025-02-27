@@ -53,7 +53,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center text-center">
             <img src="{{ asset('storage/' . $settings->logo_dark) }}" class="logo img-fluid" >
-            <div class="resort-name">Thimbiri Wewa Resort</div>
+            <div class="resort-name">SK foods</div>
         </div>
         <hr>
         <div class="row user-report">

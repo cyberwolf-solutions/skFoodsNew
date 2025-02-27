@@ -121,7 +121,7 @@
                 @endif
                 <br>
                 <div class="centered mt-1">
-                    <strong>Thimbiri Wewa Resort</strong>
+                    <strong>SK foods</strong>
                     <p>Kitchen Order Ticket</p>
                 </div>
             </div>

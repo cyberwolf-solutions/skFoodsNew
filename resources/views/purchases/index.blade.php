@@ -90,6 +90,22 @@
                                                 class="btn btn-sm btn-soft-warning"><i class="mdi mdi-cash-multiple"></i>
                                             </a>
                                         @endcan
+                                        @if($item->status == 0.00)
+                                        @can('delete purchases')
+                                            <a href="javascript:void(0)" 
+                                                data-url="{{ route('purchases.payments.approve', ['id' => $item->id]) }}"
+                                                data-title="Purchase Payments" 
+                                                data-size="lg" 
+                                                data-location="centered"
+                                                data-bs-toggle="tooltip" 
+                                                title="Confirm"
+                                                class="btn btn-sm btn-soft-success approve-btn">
+                                                <i class="bi bi-check-lg"></i>
+                                            </a>
+                                        @endcan
+                                    @endif
+                                    
+
                                         @can('delete purchases')
                                             <a href="javascript:void(0)"
                                                 data-url="{{ route('purchases.destroy', [$item->id]) }}"
@@ -107,4 +123,54 @@
         </div>
 
     </div>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="approvalModal" tabindex="-1" aria-labelledby="approvalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg rounded-3">
+                <div class="modal-header bg-light border-0">
+                    <h5 class="modal-title fw-bold text-dark" id="approvalModalLabel">
+                        <i class="bi bi-exclamation-triangle-fill text-warning"></i> Confirm Approval
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <p class="fs-5 text-muted mb-3">
+                        Are you sure you want to <span class="fw-bold text-success">approve</span> this purchase?
+                    </p>
+                    <i class="bi bi-question-circle text-primary" style="font-size: 3rem;"></i>
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Cancel
+                    </button>
+                    <button type="button" class="btn btn-success px-4 py-2" id="confirmApproval">
+                        <i class="bi bi-check-lg"></i> Yes, Approve
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript to Handle Modal Confirmation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let approveBtn = document.querySelector(".approve-btn");
+            let confirmBtn = document.getElementById("confirmApproval");
+            let approvalUrl = "";
+
+            approveBtn.addEventListener("click", function() {
+                approvalUrl = this.getAttribute("data-url");
+                let modal = new bootstrap.Modal(document.getElementById('approvalModal'));
+                modal.show();
+            });
+
+            confirmBtn.addEventListener("click", function() {
+                if (approvalUrl) {
+                    window.location.href = approvalUrl; // Redirect to the approval route
+                }
+            });
+        });
+    </script>
 @endsection

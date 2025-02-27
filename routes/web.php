@@ -75,6 +75,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/product', [ReportsController::class, 'product'])->name('product.ReportsIndex')->middleware('can:manage report');
     Route::get('/booking', [ReportsController::class, 'booking'])->name('booking.ReportsIndex')->middleware('can:manage report');
     Route::get('/order', [ReportsController::class, 'order'])->name('order.ReportsIndex')->middleware('can:manage report');
+    Route::get('/dailyorder', [ReportsController::class, 'dailyorder'])->name('order.dailyReportsIndex')->middleware('can:manage report');
+    Route::get('/stockreport', [ReportsController::class, 'stockreport'])->name('stockreport')->middleware('can:manage report');
     Route::get('/search-by-type', [ReportsController::class, 'searchByType'])->name('search.by.type');
 
 
@@ -97,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/purchase-payment/{id}', [PurchaseController::class, 'viewAddPayment'])->name('purchases.payment');
     Route::post('/purchase-payment', [PurchaseController::class, 'addPayment'])->name('purchases.payment.add');
     Route::get('/purchase-payments/view/', [PurchaseController::class, 'viewPayments'])->name('purchases.payments.view');
+    Route::get('/purchase-payments/approve/{id}', [PurchaseController::class, 'approvePayments'])->name('purchases.payments.approve');
     Route::resource('categories', CategoryController::class)->middleware('can:manage categories');
     Route::resource('units', UnitController::class)->middleware('can:manage units');
     Route::resource('ingredients', IngredientsController::class)->middleware('can:manage ingredients');
@@ -127,23 +130,23 @@ Route::middleware(['auth'])->group(function () {
     Route::get('kot/print/{id}', [KitchenController::class, 'print'])->name('kot.print');
     Route::post('kot/delete/{id}', [KitchenController::class, 'destroy'])->name('kot.delete');
     Route::get('bot/print/{id}', [BarController::class, 'print'])->name('bot.print');
-    Route::resource('rooms', RoomController::class)->middleware('can:manage rooms');
-    Route::resource('room-types', RoomTypesController::class)->middleware('can:manage rooms');
-    Route::resource('bookings', BookingController::class)->middleware('can:manage bookings');
+    // Route::resource('rooms', RoomController::class)->middleware('can:manage rooms');
+    // Route::resource('room-types', RoomTypesController::class)->middleware('can:manage rooms');
+    // Route::resource('bookings', BookingController::class)->middleware('can:manage bookings');
     Route::get('get-ingredients', [IngredientsController::class, 'getIngredients'])->name('get-ingredients');
     Route::get('get-product-ingredients', [IngredientsController::class, 'getProductIngredients'])->name('get-product-ingredients');
     Route::get('get-products', [ProductController::class, 'getProducts'])->name('get-products');
     Route::get('get-meal-products', [ProductController::class, 'getMealProducts'])->name('get-meal-products');
     Route::get('get-modifier-categories', [CategoryController::class, 'getModifierCategories'])->name('get-modifier-categories');
     Route::get('get-modifier-ingredients', [IngredientsController::class, 'getModifierIngredients'])->name('get-modifier-ingredients');
-    Route::get('get-booking-customers', [BookingController::class, 'getBookingCustomers'])->name('get-booking-customers');
-    Route::get('get-booking-rooms', [BookingController::class, 'getBookingRooms'])->name('get-booking-rooms');
-    Route::get('check-availability', [BookingController::class, 'checkAvailability'])->name('check-availability')->middleware('can:manage bookings');
-    Route::get('get-available-rooms', [BookingController::class, 'getAvailableRooms'])->name('get-available-rooms');
-    Route::get('get-booking-customers', [BookingController::class, 'getBookingCustomers'])->name('get-booking-customers');
+    // Route::get('get-booking-customers', [BookingController::class, 'getBookingCustomers'])->name('get-booking-customers');
+    // Route::get('get-booking-rooms', [BookingController::class, 'getBookingRooms'])->name('get-booking-rooms');
+    // Route::get('check-availability', [BookingController::class, 'checkAvailability'])->name('check-availability')->middleware('can:manage bookings');
+    // Route::get('get-available-rooms', [BookingController::class, 'getAvailableRooms'])->name('get-available-rooms');
+    // Route::get('get-booking-customers', [BookingController::class, 'getBookingCustomers'])->name('get-booking-customers');
     Route::post('complete-meal', [RestaurantController::class, 'completeMeal'])->name('complete-meal');
     Route::post('order/complete', [RestaurantController::class, 'completeOrder'])->name('order.complete');
-    Route::get('status', [BookingController::class, 'status'])->name('status')->middleware('can:manage bookings');
+    // Route::get('status', [BookingController::class, 'status'])->name('status')->middleware('can:manage bookings');
 
     //user profile
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
@@ -155,8 +158,9 @@ Route::middleware(['auth'])->group(function () {
 
 
     //room size
-    Route::resource('room-size', RoomSizeController::class)->middleware('can:manage rooms');
-    Route::resource('room-facility', RoomFacilityController::class)->middleware('can:manage rooms');
+    // Route::resource('room-size', RoomSizeController::class)->middleware('can:manage rooms');
+    // Route::resource('room-facility', RoomFacilityController::class)->middleware('can:manage rooms');
+ 
     Route::resource('checkin', CheckinCheckoutController::class)->middleware('can:manage bookings');
 
 
@@ -176,7 +180,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     //bording type
-    Route::resource('bording-type', BordingTypeCOntroller::class)->middleware('can:manage bording');
+    // Route::resource('bording-type', BordingTypeCOntroller::class)->middleware('can:manage bording');
 
 
     Route::resource('stock', StockController::class)->middleware('can:manage stock');

@@ -49,7 +49,7 @@
     --}}
 
     <div class="row">
-        <div class="col-4">
+        {{-- <div class="col-4">
             <select class="form-select" id="typeSelect" aria-label="Default select example">
                 <option selected disabled>Select Type</option>
                 <option value="Dining">Dining</option>
@@ -57,7 +57,7 @@
                 <option value="RoomDelivery">Room Delivery</option>
             </select>
          
-        </div>
+        </div> --}}
         <div class="col-1">
             <button type="button" class="btn btn-dark" onclick="window.location.href='{{ route('order.ReportsIndex') }}'">
                 <i class="bi bi-arrow-repeat"></i>
@@ -76,33 +76,35 @@
                             <tr>
                                 <th>#</th>
                                 <th>Id</th>
-                                <th>Customer</th>
+                                <th>Name</th>
+                                <th>Qty</th>
                                 <th>Date</th>
-                                <th>Price</th>
+                                {{-- <th>Price</th>
                                 <th>Status</th>
                                 <th>Type</th>
                                 <th>Table</th>
-                                <th>Action</th>
+                                <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>#{{ $settings->invoice($item->id) }}</td>
-                                    @if ($item->customer_id == 0)
+                                    <td>#{{ $item->id }}</td>
+                                    {{-- @if ($item->customer_id == 0)
                                         <td>Walking Customer</td>
                                     @else
                                         <td>{{ $item->customer->name }}</td>
-                                    @endif
-                                    <td>{{ \Carbon\Carbon::parse($item->order_date)->format($settings->date_format) }}</td>
-                                    <td>{{ $settings->currency }}
+                                    @endif --}}
+                                    {{-- <td>{{ $settings->currency }}
                                         {{ number_format($item->payment ? $item->payment->total : 0, 2) }}
-                                    </td>
-                                    <td>{{ $item->status }}</td>
-                                    <td>{{ $item->type }}</td>
-                                    <td>{{ $item->table_id != 0 ? $item->table->availability : 'No Table' }}</td>
-                                    <td>
+                                    </td> --}}
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->order_date)->format($settings->date_format) }}</td>
+
+                                    {{-- <td>{{ $item->table_id != 0 ? $item->table->availability : 'No Table' }}</td> --}}
+                                    {{-- <td>
                                         @can('view orders')
                                             <a href="javascript:void(0)" data-url="{{ route('orders.show', [$item->id]) }}"
                                                 data-title="View Order" data-size="xl" data-location="centered"
@@ -123,7 +125,7 @@
                                                 <i class="mdi mdi-check"></i>
                                             </a>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                             {{-- @foreach ($data as $key => $item)

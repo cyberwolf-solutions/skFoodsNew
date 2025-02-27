@@ -132,7 +132,7 @@
                 @endif
                 <br>
                 <div class="centered mt-1">
-                    <strong>Thimbiri Wewa Resort</strong>
+                    <strong>SK foods</strong>
                     <p>Contact : <strong>+94 76 118 7676</strong></p>
                 </div>
             </div>

@@ -270,6 +270,7 @@ class PurchaseController extends Controller
         return view('purchases.show', compact('title', 'breadcrumbs', 'data'));
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -431,6 +432,26 @@ class PurchaseController extends Controller
 
         return view('purchases.payments-modal', compact('data'));
     }
+
+    public function approvePayments(string $id)
+    {
+        // Find the specific payment by ID
+        $payment = Purchases::findOrFail($id);
+
+        // Update status to 1 (Approved)
+        $payment->update(['status' => 1.00]);
+
+        $title = 'Purchase';
+
+        $breadcrumbs = [
+            // ['label' => 'First Level', 'url' => '', 'active' => false],
+            ['label' => $title, 'url' => '', 'active' => true],
+        ];
+        $data = Purchases::all();
+        return view('purchases.index', compact('title', 'breadcrumbs', 'data'))->with('success', 'Payment approved successfully.');;
+        // return view('purchases.index', compact('data'))->with('success', 'Payment approved successfully.');
+    }
+
 
     public function addPayment(Request $request)
     {

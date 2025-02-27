@@ -211,13 +211,13 @@
                 @endcanany
 
 
-                @can('manage kitchen')
+                {{-- @can('manage kitchen')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('kitchen.index') }}">
                             <i class="ri-menu-add-line"></i> <span>Kitchen</span>
                         </a>
                     </li>
-                @endcan
+                @endcan --}}
 
                 @canany(['manage orders', 'manage bar', 'manage tables', 'manage table-arrangements'])
                     <li class="nav-item">
@@ -258,7 +258,7 @@
                     </li>
                 @endcanany
 
-                
+
 
                 @canany(['manage report'])
                     <li class="nav-item">
@@ -299,11 +299,18 @@
                                         <a href="{{ route('product.ReportsIndex') }}" class="nav-link">Product Reports</a>
                                     </li>
                                 @endcan
-                                
+
 
                                 @can('manage report')
                                     <li class="nav-item">
-                                        <a href="{{ route('order.ReportsIndex') }}" class="nav-link">Order Reports</a>
+                                        <a href="{{ route('order.ReportsIndex') }}" class="nav-link">Sales Reports</a>
+                                    </li>
+                                @endcan
+
+                                @can('manage report')
+                                    <li class="nav-item">
+                                        <a href="{{ route('stockreport') }}" class="nav-link">Stock
+                                            Reports</a>
                                     </li>
                                 @endcan
 

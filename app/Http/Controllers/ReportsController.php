@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stock;
 use App\Models\User;
 use App\Models\Booking;
 use App\Models\Product;
@@ -11,6 +12,7 @@ use App\Models\Order;
 use App\Models\Supplier;
 use App\Models\Purchases;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ReportsController extends Controller
 {
@@ -23,7 +25,6 @@ class ReportsController extends Controller
             ['label' => $title, 'url' => '', 'active' => true],
         ];
         $data = User::with('roles')->get();
-
 
         return view('reports.Userindex', compact('title', 'breadcrumbs', 'data'));
     }
@@ -94,26 +95,51 @@ class ReportsController extends Controller
         return view('reports.productindex', compact('title', 'breadcrumbs', 'data'));
     }
 
-    public function booking()
-    {
-        $title = 'Booking Report';
+    // public function booking()
+    // {
+    //     $title = 'Booking Report';
 
-        $breadcrumbs = [
-            // ['label' => 'First Level', 'url' => '', 'active' => false],
-            ['label' => $title, 'url' => '', 'active' => true],
-        ];
-        $data = Booking::all();
-        return view('reports.bookingindex', compact('title', 'breadcrumbs', 'data'));
-    }
+    //     $breadcrumbs = [
+    //         // ['label' => 'First Level', 'url' => '', 'active' => false],
+    //         ['label' => $title, 'url' => '', 'active' => true],
+    //     ];
+    //     $data = Booking::all();
+    //     return view('reports.bookingindex', compact('title', 'breadcrumbs', 'data'));
+    // }
     public function order()
     {
-        $title = 'Order Report';
+        $title = 'Sales Report';
 
         $breadcrumbs = [
             // ['label' => 'First Level', 'url' => '', 'active' => false],
             ['label' => $title, 'url' => '', 'active' => true],
         ];
         $data = Order::all();
+        return view('reports.orderindex', compact('title', 'breadcrumbs', 'data'));
+    }
+
+    public function stockreport()
+    {
+        $title = 'Stock Report';
+
+        $breadcrumbs = [
+            // ['label' => 'First Level', 'url' => '', 'active' => false],
+            ['label' => $title, 'url' => '', 'active' => true],
+        ];
+        $data = Stock::all();
+        return view('reports.stockindex', compact('title', 'breadcrumbs', 'data'));
+    }
+
+    public function dailyorder()
+    {
+        $title = 'Daily Sales Report';
+
+        $breadcrumbs = [
+            ['label' => $title, 'url' => '', 'active' => true],
+        ];
+
+        $data = Order::whereDate('created_at', Carbon::today())->get();
+
         return view('reports.orderindex', compact('title', 'breadcrumbs', 'data'));
     }
 
@@ -135,6 +161,5 @@ class ReportsController extends Controller
 
         // return response()->json($data);
         return view('reports.orderindex', compact('title', 'breadcrumbs', 'data'));
-
     }
 }
