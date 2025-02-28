@@ -236,7 +236,7 @@
                 );
                 printWindow.document.write('<div class="resort-name">SK foods</div>');
                 printWindow.document.write('<hr>');
-                printWindow.document.write('<h4>Users Report</h4>');
+                printWindow.document.write('<h4>Sales Report</h4>');
                 printWindow.document.write(document.getElementById('example').outerHTML);
                 printWindow.document.write('</div>');
                 printWindow.document.write('</body></html>');

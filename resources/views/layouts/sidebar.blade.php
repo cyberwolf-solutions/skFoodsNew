@@ -237,7 +237,7 @@
                                         <a href="{{ route('kitchen.index') }}" class="nav-link">Kitchen</a>
                                     </li>
                                 @endcan --}}
-                                @can('manage bar')
+                                {{-- @can('manage bar')
                                     <li class="nav-item">
                                         <a href="{{ route('bar.index') }}" class="nav-link">Bar</a>
                                     </li>
@@ -246,7 +246,7 @@
                                     <li class="nav-item">
                                         <a href="{{ route('tables.index') }}" class="nav-link">Tables</a>
                                     </li>
-                                @endcan
+                                @endcan --}}
                                 {{-- @can('manage table arrangements')
                                     <li class="nav-item">
                                         <a href="{{ route('table-arrangements.index') }}" class="nav-link">Table
