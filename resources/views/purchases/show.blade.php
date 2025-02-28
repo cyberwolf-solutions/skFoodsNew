@@ -129,7 +129,7 @@
                                             <tr>
                                                 <th scope="row">{{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}</th>
                                                 <td class="text-start">
-                                                    {{ $item->product->name }}
+                                                    {{-- {{ $item->product->name }} --}}
                                                 </td>
                                                 <td>{{ $settings->currency }} {{ $item->price }}</td>
                                                 <td> {{ $item->quantity }}</td>

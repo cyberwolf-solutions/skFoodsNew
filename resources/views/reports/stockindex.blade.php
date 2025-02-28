@@ -7,6 +7,7 @@
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                 <div>
+
                     <h3 class="mb-sm-0">{{ $title }}</h3>
 
                     <ol class="breadcrumb m-0 mt-2">
@@ -32,52 +33,150 @@
                         <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                     </button>
                 </div>
-
-
             </div>
         </div>
     </div>
 
+    {{-- <div class="row">
+        <div class="col-4">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="Dining" selected>Dining</option>
+                <option value="TakeAway">TakeAway</option>
+                <option value="RoomDelivery">Room Delivery</option>
+              </select>
+        </div>
+    </div>
+    --}}
+
+    <div class="row">
+        {{-- <div class="col-4">
+            <select class="form-select" id="typeSelect" aria-label="Default select example">
+                <option selected disabled>Select Type</option>
+                <option value="Dining">Dining</option>
+                <option value="TakeAway">TakeAway</option>
+                <option value="RoomDelivery">Room Delivery</option>
+            </select>
+         
+        </div> --}}
+        <div class="col-1">
+            <button type="button" class="btn btn-dark" onclick="window.location.href='{{ route('order.ReportsIndex') }}'">
+                <i class="bi bi-arrow-repeat"></i>
+
+            </button>
+        </div>
+
+    </div>
     <div class="row mt-3">
+
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table align-middle" id="example">
-                        <thead>
+                        <thead class="table-light">
                             <tr>
                                 <th>#</th>
-                                <th>Supplier Name</th>
-                                <th>Contact</th>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Purchase Date</th>
-                                <th>Payment</th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Qty</th>
+                                <th>Date</th>
+                                {{-- <th>Price</th>
+                                <th>Status</th>
+                                <th>Type</th>
+                                <th>Table</th>
+                                <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $purchase)
-                                @foreach ($purchase->items as $item)
-                                    <tr>
-                                        <td>{{ $purchase->id }}</td>
-                                        <td>{{ $purchase->supplier->name ?? 'N/A' }}</td>
-                                        <td>{{ $purchase->supplier->contact_primary ?? 'N/A' }}</td>
-                                        <td>{{ $item->product->name ?? 'N/A' }}</td>
-                                        <td>{{ $item->quantity }}</td>
-                                        <td>{{ $purchase->date }}</td>
-                                        <td>
-                                            @foreach ($purchase->payments as $payment)
-                                                LKR.{{ $payment->amount }}.00
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                @endforeach
+                            @foreach ($data as $key => $item)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>#{{ $item->id }}</td>
+                                    {{-- @if ($item->customer_id == 0)
+                                        <td>Walking Customer</td>
+                                    @else
+                                        <td>{{ $item->customer->name }}</td>
+                                    @endif --}}
+                                    {{-- <td>{{ $settings->currency }}
+                                        {{ number_format($item->payment ? $item->payment->total : 0, 2) }}
+                                    </td> --}}
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->order_date)->format($settings->date_format) }}</td>
+
+                                    {{-- <td>{{ $item->table_id != 0 ? $item->table->availability : 'No Table' }}</td> --}}
+                                    {{-- <td>
+                                        @can('view orders')
+                                            <a href="javascript:void(0)" data-url="{{ route('orders.show', [$item->id]) }}"
+                                                data-title="View Order" data-size="xl" data-location="centered"
+                                                data-ajax-popup="true" data-bs-toggle="tooltip" title="View Order"
+                                                class="btn btn-sm btn-light"><i class="mdi mdi-eye"></i>
+                                            </a>
+                                        @endcan
+                                        <a href="{{ route('order.print', [$item->id]) }}" target="__blank"
+                                            class="btn btn-sm btn-soft-warning ms-1" data-bs-toggle="tooltip"
+                                            title="Print">
+                                            <i class="mdi mdi-printer"></i>
+                                        </a>
+                                        @if ($item->table_id != 0)
+                                            <a href="javascript:void(0)" data-url="{{ route('order.complete') }}"
+                                                data-data='{"id":{{ $item->id }}}'
+                                                class="btn btn-sm btn-soft-success ms-1 send-post-ajax"
+                                                data-bs-toggle="tooltip" title="Complete">
+                                                <i class="mdi mdi-check"></i>
+                                            </a>
+                                        @endif
+                                    </td> --}}
+                                </tr>
                             @endforeach
+                            {{-- @foreach ($data as $key => $item)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $item->customer_id }}</td>
+                                    <td>{{ $item->room_id }}</td>
+                                    <td>{{ $item->order_date }}</td>
+                                    <td>{{ $item->table_id }}</td>
+                                    <td>{{ $item->orderable_type }}</td>
+                                    <td>{{ $item->orderable_id }}</td>
+                                  
+                                </tr>
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#typeSelect').change(function() {
+            var selectedType = $(this).val();
+            window.location.href = "/search-by-type?type=" + selectedType;
+        });
+
+        // $(document).ready(function() {
+
+        //     $('#typeSelect').change(function() {
+        //         var selectedType = $(this).val();
+        //         $.ajax({
+        //             url: "{{ route('search.by.type') }}",
+        //             method: 'GET',
+        //             data: {
+        //                 type: selectedType
+        //             },
+        //             success: function(response) {
+        //                 console.log(response); // Process the response and display the data
+        //                 // You could display the results in a table here.
+        //             },
+        //             error: function(xhr) {
+        //                 alert("An error occurred: " + xhr.statusText);
+        //                 console.error("An error occurred: " + xhr.statusText);
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("printButton").addEventListener("click", function() {
@@ -170,7 +269,7 @@
                 );
 
                 printWindow.document.write("<hr>");
-                printWindow.document.write("<h4>Purchase Report</h4>");
+                printWindow.document.write("<h4>Stock Report</h4>");
                 printWindow.document.write(document.getElementById("example").outerHTML);
                 printWindow.document.write("</div>");
                 printWindow.document.write("</body></html>");
@@ -197,7 +296,7 @@
                 var encodedUri = encodeURI(csvContent);
                 var link = document.createElement("a");
                 link.setAttribute("href", encodedUri);
-                link.setAttribute("download", "purchase.csv");
+                link.setAttribute("download", "stock.csv");
                 document.body.appendChild(link);
                 link.click();
             });

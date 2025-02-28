@@ -68,11 +68,18 @@
                                     <td>{{ $item->name }}</td>
                                     <td>
                                         {{ $item->quantity }}
-                                        @if ($item->ingredient && $item->ingredient->unit)
+                                        {{-- @if ($item->ingredient && $item->ingredient->unit)
                                             {{ $item->ingredient->unit->name }}
-                                        @endif
+                                        @endif --}}
                                     </td>
-                                    <td>{{ $item->products }}</td>
+                                    <td>
+                                        <ul>
+                                            @foreach(explode(',', $item->products) as $product)
+                                                <li>{{ trim($product) }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    
                                     <td>{{ $item->date }}</td>
                                     {{-- <td>{{ $item->room_no }}</td>
                                     <td>{{ $settings->currency }} {{ number_format($item->price, 2) }}</td>

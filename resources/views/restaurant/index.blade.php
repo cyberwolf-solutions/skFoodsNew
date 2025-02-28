@@ -28,7 +28,7 @@
                             <select class="form-control js-example-basic-single" name="" id="type">
                                 <option value="Dining" selected>Dining</option>
                                 <option value="TakeAway">TakeAway</option>
-                                <option value="RoomDelivery">Room Delivery</option>
+                                {{-- <option value="RoomDelivery">Room Delivery</option> --}}
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -42,7 +42,7 @@
                                     class="mdi mdi-book label-icon align-middle fs-16 me-2"></i>
                                 Notes</button>
                         </div>
-                        @can('manage kitchen')
+                        {{-- @can('manage kitchen')
                             <div class="col">
                                 <a href="{{ route('kitchen.index') }}" target="_blank" type="button"
                                     class="btn btn-soft-info btn-label waves-effect waves-light form-control"><i
@@ -55,15 +55,15 @@
                                     class="btn btn-soft-secondary btn-label waves-effect waves-light form-control"><i
                                         class="mdi mdi-glass-cocktail label-icon align-middle fs-16 me-2"></i> Bar</a>
                             </div>
-                        @endcan
-                        <div class="col">
+                        @endcan --}}
+                        {{-- <div class="col">
                             <button type="button"
                                 class="btn btn-soft-success btn-label waves-effect waves-light form-control"
                                 data-ajax-popup="true" data-title="Orders in process" data-size="lg"
                                 data-url="{{ route('restaurant.process') }}"><i
                                     class="mdi mdi-list-box label-icon align-middle fs-16 me-2"></i> In
                                 Process</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

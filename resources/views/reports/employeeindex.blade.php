@@ -76,74 +76,109 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById('printButton').addEventListener('click', function() {
-                var printWindow = window.open('', '_blank');
+            document.getElementById("printButton").addEventListener("click", function() {
+                var logoUrl = "{{ asset('build/images/logo.png') }}";
+                var printWindow = window.open("", "_blank");
                 printWindow.document.open();
-                printWindow.document.write('<html><head><title>Print</title>');
-                printWindow.document.write('<style>');
+                printWindow.document.write("<html><head><title>Print</title>");
+
+                // Add a base tag for resolving relative URLs
+                printWindow.document.write('<base href="{{ url('/') }}">');
+
+                printWindow.document.write("<style>");
                 printWindow.document.write(`
-                body {
-                    background-color: #f8f9fa;
-                    font-family: Arial, sans-serif;
-                }
-                .container-fluid {
-                    padding: 20px;
-                }
-                .logo {
-                    max-width: 200px;
-                    margin-bottom: 10px;
-                }
-                .resort-name {
-                    font-size: 24px;
-                    color: #111316;
-                    font-weight: bold;
-                    text-align: center; /* Center the text */
-                    margin: 0 auto; /* Center horizontally */
-                }
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    background-color: #fff;
-                    border-radius: 10px;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                }
-                th, td {
-                    border: 1px solid #ddd;
-                    padding: 8px;
-                    text-align: left;
-                    vertical-align: middle;
-                }
-                th {
-                    background-color: #007bff;
-                    color: #fff;
-                }
-                .table-hover tbody tr:hover {
-                    background-color: #f0f0f0;
-                }
-                .status-active {
-                    color: #28a745;
-                    font-weight: bold;
-                }
-                .status-inactive {
-                    color: #dc3545;
-                    font-weight: bold;
-                }
-            `);
-                printWindow.document.write('</style></head><body>');
+            /* Force colors on print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            body {
+                background-color: #f8f9fa;
+                font-family: 'Arial', sans-serif;
+                color: #333;
+                padding: 20px;
+            }
+            .container-fluid {
+                padding: 20px;
+            }
+            .logo {
+                max-width: 200px;
+                margin-bottom: 10px;
+            }
+            .resort-name {
+                font-size: 24px;
+                color: #111316;
+                font-weight: bold;
+                text-align: center;
+                margin: 0 auto;
+            }
+            hr {
+                border: 1px solid #ddd;
+                margin: 20px 0;
+            }
+            h4 {
+                text-align: center;
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border-radius: 8px;
+                overflow: hidden;
+                background-color: #ffffff;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            thead {
+                background-color: #116530;
+                color: white;
+                text-align: left;
+                font-weight: bold;
+            }
+            th, td {
+                padding: 12px;
+                border: 1px solid #ddd;
+            }
+            tbody tr:nth-child(odd) {
+                background-color: #f8f9fa;
+            }
+            tbody tr:hover {
+                background-color: #e9ecef;
+            }
+            .status-active {
+                color: #28a745;
+                font-weight: bold;
+            }
+            .status-inactive {
+                color: #dc3545;
+                font-weight: bold;
+            }
+        `);
+                printWindow.document.write("</style></head><body>");
                 printWindow.document.write('<div class="container-fluid">');
+
+                // Centered Logo
                 printWindow.document.write(
-                    '<img src="{{ asset('storage/' . $settings->logo_dark) }}" class="logo img-fluid">'
-                    );
-                printWindow.document.write('<div class="resort-name">Thimbiri Wewa Resort</div>');
-                printWindow.document.write('<hr>');
-                // printWindow.document.write('<h4>Users Report</h4>');
-                printWindow.document.write(document.getElementById('example').outerHTML);
-                printWindow.document.write('</div>');
-                printWindow.document.write('</body></html>');
+                    '<div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">' +
+                    '<img src="' + logoUrl +
+                    '" class="logo img-fluid" style="height:100px;width:auto;">' +
+                    "</div>"
+                );
+
+                printWindow.document.write("<hr>");
+                printWindow.document.write("<h4>Employee Report</h4>");
+                printWindow.document.write(document.getElementById("example").outerHTML);
+                printWindow.document.write("</div>");
+                printWindow.document.write("</body></html>");
                 printWindow.document.close();
-                printWindow.print();
+
+                // Wait for the content to load before printing
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
             });
-            document.getElementById('csvButton').addEventListener('click', function() {
+
+            document.getElementById("csvButton").addEventListener("click", function() {
                 var csvContent = "data:text/csv;charset=utf-8,";
                 var rows = document.querySelectorAll("#example tbody tr");
 
@@ -158,11 +193,10 @@
                 var encodedUri = encodeURI(csvContent);
                 var link = document.createElement("a");
                 link.setAttribute("href", encodedUri);
-                link.setAttribute("download", "employees.csv");
+                link.setAttribute("download", "employee.csv");
                 document.body.appendChild(link);
                 link.click();
             });
-            
         });
     </script>
 @endsection

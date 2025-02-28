@@ -121,7 +121,11 @@
                 @endif
                 <br>
                 <div class="centered mt-1">
-                    <strong>Thimbiri Wewa Resort</strong>
+                    <a href="index" class="d-block">
+                        <img src="{{ URL::asset('build/images/logo.png') }}"
+                            alt="" height="18" style="height:100px;width:auto">
+                    </a>
+                    <strong>SK foods</strong>
                     <p>Kitchen Order Ticket</p>
                 </div>
             </div>
