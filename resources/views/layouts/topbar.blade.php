@@ -3,10 +3,14 @@
         <div class="navbar-header">
             <div class="d-flex">
                 <!-- LOGO -->
+                <a href="index" class="d-block">
+                    <img src="{{ URL::asset('build/images/logo.png') }}"
+                        alt="" height="18" style="height:100px;width:auto">
+                </a>
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="{{ route('home') }}" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
+                            <img src="{{ URL::asset('build/images/logo.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
                             <img src="{{ URL::asset('storage/' . $settings->logo_dark) }}" alt=""
@@ -16,7 +20,7 @@
 
                     <a href="{{ route('home') }}" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
+                            <img src="{{ URL::asset('build/images/logo.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
                             <img src="{{ URL::asset('storage/' . $settings->logo_light) }}" alt=""

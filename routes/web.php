@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/order', [ReportsController::class, 'order'])->name('order.ReportsIndex')->middleware('can:manage report');
     Route::get('/dailyorder', [ReportsController::class, 'dailyorder'])->name('order.dailyReportsIndex')->middleware('can:manage report');
     Route::get('/stockreport', [ReportsController::class, 'stockreport'])->name('stockreport')->middleware('can:manage report');
+    Route::get('/dailystockreport', [ReportsController::class, 'dailystock'])->name('dailystockreport')->middleware('can:manage report');
     Route::get('/final', [ReportsController::class, 'final'])->name('final')->middleware('can:manage report');
     Route::get('/search-by-type', [ReportsController::class, 'searchByType'])->name('search.by.type');
 

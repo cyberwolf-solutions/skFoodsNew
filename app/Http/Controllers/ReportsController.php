@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Booking;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\DailyStock;
 use App\Models\Employee;
 use App\Models\Order;
 use App\Models\Supplier;
@@ -254,7 +255,23 @@ class ReportsController extends Controller
         $data = Stock::all();
         return view('reports.stockindex', compact('title', 'breadcrumbs', 'data'));
     }
-
+    public function dailystock()
+    {
+        $title = 'Daily Stock Report';
+    
+        $breadcrumbs = [
+            ['label' => $title, 'url' => '', 'active' => true],
+        ];
+    
+        // Get today's date
+        $today = Carbon::today()->toDateString();  // "Y-m-d" format
+    
+        // Fetch only today's records based on the 'date' column
+        $data = DailyStock::whereDate('date', $today)->get();  // Assuming the column name is 'date'
+    
+        return view('reports.dailystock', compact('title', 'breadcrumbs', 'data'));
+    }
+    
     public function dailyorder()
     {
         $title = 'Daily Sales Report';

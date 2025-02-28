@@ -127,12 +127,16 @@
 
         <div id="receipt-data">
             <div class="top">
-                @if ($settings->logo_dark)
+                {{-- @if ($settings->logo_dark)
                     <img src="{{ asset('storage/app/public/' . $settings->logo_dark) }}" height="41" width="183" style="margin:-5px 0;filter: brightness(0);" class="centered-image">
                 @endif
-                <br>
+                <br> --}}
                 <div class="centered mt-1">
-                    <strong>SK foods</strong>
+                    <a href="index" class="d-block">
+                        <img src="{{ URL::asset('build/images/logo.png') }}"
+                            alt="" height="18" style="height:100px;width:auto">
+                    </a>
+                   
                     <p>Contact : <strong>+94 76 118 7676</strong></p>
                 </div>
             </div>
