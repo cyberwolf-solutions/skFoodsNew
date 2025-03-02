@@ -60,10 +60,10 @@
          
         </div> --}}
         <div class="col-1">
-            <button type="button" class="btn btn-dark" onclick="window.location.href='{{ route('order.ReportsIndex') }}'">
+            <button type="button" class="btn btn-dark" onclick="window.location.href='{{ route('dailystockreport') }}'">
                 <i class="bi bi-arrow-repeat"></i>
-
             </button>
+            
         </div>
 
     </div>
