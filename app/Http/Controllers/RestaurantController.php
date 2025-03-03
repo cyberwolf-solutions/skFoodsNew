@@ -249,7 +249,7 @@ class RestaurantController extends Controller
                 }
 
                 $data = [
-                    'itemable_type' => 'App\Models\Meal',
+                    'itemable_type' => 'App\Models\Product',
                     'itemable_id' => $value['id'],
                     'order_id' => $order->id,
                     'price' => $value['price'],

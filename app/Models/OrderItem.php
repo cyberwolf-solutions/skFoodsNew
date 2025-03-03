@@ -19,10 +19,13 @@ class OrderItem extends Model {
         'updated_by',
     ];
 
-    public function meal() {
-        return $this->hasOne(Product::class, 'id', 'itemable_id');
+    // public function meal() {
+    //     return $this->hasOne(Product::class, 'id', 'itemable_id');
+    // }
+    public function itemable() {
+        return $this->morphTo();
     }
-
+    
     public function modifiers() {
         return $this->hasMany(OrderItemModifier::class, 'item_id', 'id');
     }
