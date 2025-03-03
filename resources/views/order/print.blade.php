@@ -166,7 +166,7 @@
                 <tbody>
                     @foreach ($data->items as $item)
                         <tr>
-                            <td>{{ $item->meal->name }}</td>
+                            <td>{{ $item->products->name }}</td>
                             <td class="text-right">{{ $item->quantity }}</td>
                             <td class="text-right">{{ number_format($item->total, 2) }}</td>
                         </tr>

@@ -20,7 +20,7 @@ class OrderItem extends Model {
     ];
 
     public function meal() {
-        return $this->hasOne(Meal::class, 'id', 'itemable_id');
+        return $this->hasOne(Product::class, 'id', 'itemable_id');
     }
 
     public function modifiers() {
