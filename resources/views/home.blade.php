@@ -74,7 +74,7 @@
     @endcan
 
 
-    @can('widget kitchen')
+    {{-- @can('widget kitchen')
         <div class="card mb-4 bg-light  shadow-lg">
             <div class="card-header  text-white">
                 <h5 class="mb-0">Kitchen Order Tickets</h5>
@@ -116,7 +116,7 @@
                 </div>
             </div>
         </div>
-    @endcan
+    @endcan --}}
 
     <style>
         .card {
