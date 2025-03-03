@@ -166,6 +166,7 @@
                 <tbody>
                     @foreach ($data->items as $item)
                         <tr>
+
                             {{-- <td>{{ $item->products->name }}</td> --}}
                             {{-- <td>{{ $item->itemable->name ?? 'N/A' }}</td> --}}
                             <td>
@@ -176,6 +177,7 @@
                                 @endif
                             </td>
                             
+
                             <td class="text-right">{{ $item->quantity }}</td>
                             <td class="text-right">{{ number_format($item->total, 2) }}</td>
                         </tr>

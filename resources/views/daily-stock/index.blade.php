@@ -67,11 +67,12 @@
                                     
                                     <td>{{ $item->name }}</td>
                                     <td>
-                                        {{ $item->quantity }}
-                                        {{-- @if ($item->ingredient && $item->ingredient->unit)
-                                            {{ $item->ingredient->unit->name }}
-                                        @endif --}}
+                                        {{ $item->quantity }} 
+                                        @if ($item->ingredient && $item->ingredient->unit)
+                                             {{ $item->ingredient->unit->name }}
+                                        @endif
                                     </td>
+                                    
                                     <td>
                                         <ul>
                                             @foreach(explode(',', $item->products) as $product)
