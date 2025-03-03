@@ -116,7 +116,7 @@
                                             @foreach ($meals as $meal)
                                                 @php
                                                     if ($meal->image_url != null) {
-                                                        $image = 'uploads/meals/' . $meal->image_url;
+                                                        $image = 'uploads/products/' . $meal->image_url;
                                                     } else {
                                                         $image = 'uploads/cutlery.png';
                                                     }

@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use App\Models\BookingsRooms;
 use App\Models\OrderItemModifier;
 use App\Models\ModifiersCategories;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
@@ -41,7 +42,7 @@ class RestaurantController extends Controller
         ];
 
         $categories = Category::all()->where('type', 'Restaurant');
-        $meals = Meal::all();
+        $meals = Product::all();
 
         return view('restaurant.index', compact('title', 'breadcrumbs', 'categories', 'meals'));
     }
@@ -129,20 +130,20 @@ class RestaurantController extends Controller
     //     return view('restaurant.rooms-modal', compact('rooms', 'room'));
     // }
 
-    public function rooms(Request $request)
-    {
-        $room = $request->room;
+    // public function rooms(Request $request)
+    // {
+    //     $room = $request->room;
     
-        // Retrieve rooms with pending bookings and load customer info
-        $rooms = BookingsRooms::whereHas('bookings', function ($query) {
-            $query->whereIn('status', ['Pending', 'Ongoing']);
-        })
-        ->with(['bookings.customerss']) // Use the correct relationship names
-        ->get();
+    //     // Retrieve rooms with pending bookings and load customer info
+    //     $rooms = BookingsRooms::whereHas('bookings', function ($query) {
+    //         $query->whereIn('status', ['Pending', 'Ongoing']);
+    //     })
+    //     ->with(['bookings.customerss']) // Use the correct relationship names
+    //     ->get();
         
     
-        return view('restaurant.rooms-modal', compact('rooms', 'room'));
-    }
+    //     return view('restaurant.rooms-modal', compact('rooms', 'room'));
+    // }
     
     public function customer(Request $request)
     {
@@ -248,7 +249,7 @@ class RestaurantController extends Controller
                 }
 
                 $data = [
-                    'itemable_type' => 'App\Models\Meal',
+                    'itemable_type' => 'App\Models\Product',
                     'itemable_id' => $value['id'],
                     'order_id' => $order->id,
                     'price' => $value['price'],
