@@ -158,7 +158,7 @@
                 @endif
                 <br>
                 <div style="text-align: center;margin-top: 5px;margin-bottom: 1px;">
-                    <strong>Thimbiri Wewa Resort</strong>
+                    <strong>sk Foods.</strong>
                 </div>
                 <div style="text-align: center;margin-bottom: -3px;">
                     Contact : <strong>+94 76 118 7676</strong>
