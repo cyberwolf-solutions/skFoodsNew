@@ -27,11 +27,7 @@
                 </div>
 
                 <div class="page-title-right">
-                    {{-- Add Buttons Here --}}
-                    {{-- <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
-                        title="Create">
-                        <i class="ri-add-line fs-5"></i>
-                    </a> --}}
+                   
                 </div>
             </div>
         </div>
@@ -69,7 +65,7 @@
                             <input type="text" name="unit_price" id="" class="form-control"
                                 value="{{ $is_edit ? $data->unit_price : '' }}" placeholder="Enter Unit Price" required />
                         </div>
-                        <div class="col-md-6 mb-3 required">
+                        {{-- <div class="col-md-6 mb-3 required">
                             <label for="" class="form-label">Type</label>
                             <select name="type" class="form-control js-example-basic-single" id="" required>
                                 <option value="">Select...</option>
@@ -82,7 +78,7 @@
                                         {{ $item }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">

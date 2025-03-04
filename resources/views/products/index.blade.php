@@ -53,7 +53,7 @@
                             <th>Category</th>
                             <th>Unit Price</th>
                             <th>Description</th>
-                            <th>Type</th>
+                            {{-- <th>Type</th> --}}
                             <th>Action</th>
                         </thead>
                         <tbody>
@@ -76,7 +76,7 @@
                                     <td>{{ $item->category->name }}</td>
                                     <td>{{ $settings->currency }} {{ number_format($item->unit_price, 2) }}</td>
                                     <td>{{ $item->description }}</td>
-                                    <td>{{ $item->type }}</td>
+                                    {{-- <td>{{ $item->type }}</td> --}}
                                     <td>
                                         @if(isset($item->ingredients))
                                         @can('manage ingredients')

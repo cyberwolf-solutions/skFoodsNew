@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->float('unit_price')->default(0);
             $table->string('image_url')->nullable();
             $table->string('description')->nullable();
-            $table->enum('type', ['KOT', 'BOT'])->default('KOT');
+            // $table->enum('type', ['KOT', 'BOT'])->default('KOT');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();

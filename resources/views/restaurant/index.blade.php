@@ -178,14 +178,14 @@
                                             <span id="name"> Select Customer</span>
                                         </button>
                                     </div>
-                                    <div class="col-4">
+                                    {{-- <div class="col-4">
                                         <button id="room-btn" class="btn btn-light btn-sm form-control"
                                             data-ajax-popup="true" data-title="Rooms" data-size="lg"
                                             data-url="{{ route('restaurant.rooms') }}" data-binding=""><i
                                                 class="mdi mdi-room-service"></i>
                                             <span id="name"> Select Room</span>
                                         </button>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-4">
                                         <button id="table-btn" class="btn btn-light btn-sm form-control"
                                             data-ajax-popup="true" data-title="Tables" data-size="lg"

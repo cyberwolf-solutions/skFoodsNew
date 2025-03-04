@@ -197,7 +197,7 @@ class RestaurantController extends Controller
             'bar_note' => 'required',
             'staff_note' => 'required',
             'payment_note' => 'required',
-            'type' => 'required',
+            // 'type' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -216,10 +216,11 @@ class RestaurantController extends Controller
                 'customer_id' => $request->customer,
                 'room_id' => $request->room,
                 'table_id' => $request->table,
+                // 'status' => 'Paid',
                 'orderable_type' => 'App\Models\OrderItem',
                 'orderable_id' => '0',
                 'order_date' => date('d-m-Y'),
-                'type' => $request->type,
+                // 'type' => $request->type,
                 'created_by' => Auth::user()->id,
             ];
             //Create order
@@ -233,20 +234,20 @@ class RestaurantController extends Controller
 
             foreach ($cart as $key => $value) {
 
-                $meal = Meal::where('id', $value['id'])->whereHas('products', function ($query) {
-                    $query->where('type', 'KOT');
-                })->first();
+                // $meal = Meal::where('id', $value['id'])->whereHas('products', function ($query) {
+                //     $query->where('type', 'KOT');
+                // })->first();
 
-                if ($meal) {
-                    $isKOT = true;
-                }
-                $meal = Meal::where('id', $value['id'])->whereHas('products', function ($query) {
-                    $query->where('type', 'BOT');
-                })->first();
+                // if ($meal) {
+                //     $isKOT = true;
+                // }
+                // $meal = Meal::where('id', $value['id'])->whereHas('products', function ($query) {
+                //     $query->where('type', 'BOT');
+                // })->first();
 
-                if ($meal) {
-                    $isBOT = true;
-                }
+                // if ($meal) {
+                //     $isBOT = true;
+                // }
 
                 $data = [
                     'itemable_type' => 'App\Models\Product',

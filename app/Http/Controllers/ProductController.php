@@ -58,7 +58,7 @@ class ProductController extends Controller {
             'name' => 'required|string|unique:products,name',
             'category' => 'required',
             'unit_price' => 'required',
-            'type' => 'required',
+            // 'type' => 'required',
             'description' => 'nullable',
             'image' => 'nullable|max:5000',
         ]);
@@ -87,7 +87,7 @@ class ProductController extends Controller {
                 'name' => $request->name,
                 'category_id' => $request->category,
                 'unit_price' => $request->unit_price,
-                'type' => $request->type,
+                // 'type' => $request->type,
                 'description' => $request->description,
                 'image_url' => $image_url,
                 'created_by' => Auth::user()->id,
@@ -160,8 +160,8 @@ class ProductController extends Controller {
         $html .= '<td>' . @$data->category->name . '</td>';
         $html .= '</tr>';
         $html .= '<tr>';
-        $html .= '<td>Type :</td>';
-        $html .= '<td>' . $data->type . '</td>';
+        // $html .= '<td>Type :</td>';
+        // $html .= '<td>' . $data->type . '</td>';
         $html .= '</tr>';
         if(isset($data->ingredients)){
             $html .= '<tr>';
@@ -235,7 +235,7 @@ class ProductController extends Controller {
             'name' => 'required|string|unique:products,name,' . $id,
             'category' => 'required',
             'unit_price' => 'required',
-            'type' => 'required',
+            // 'type' => 'required',
             'description' => 'nullable',
             'image' => 'nullable|max:5000',
         ]);
@@ -262,7 +262,7 @@ class ProductController extends Controller {
                 'name' => $request->name,
                 'category_id' => $request->category,
                 'unit_price' => $request->unit_price,
-                'type' => $request->type,
+                // 'type' => $request->type,
                 'description' => $request->description,
                 'updated_by' => Auth::user()->id,
             ];
