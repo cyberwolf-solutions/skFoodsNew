@@ -141,7 +141,9 @@
                         <div class="text-center">
                             <script>
                                 document.write(new Date().getFullYear())
+
                             </script> © sk Foods. Crafted with <i
+
                                 class="mdi mdi-heart text-danger"></i> by
                             CyberWolf Solutions (Pvt) Ltd.</p>
                         </div>

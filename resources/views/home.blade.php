@@ -26,15 +26,12 @@
                         </div>
                     </div>
                 </div>
-                
+    
             </div>
         </div>
     @endcan
 
-    
-
-
-    @can('guest widget')
+        @can('guest widget')
         <div class="container mt-2">
             <div class="row">
                 <div class="col-12 col-md-4 ">
@@ -74,7 +71,7 @@
     @endcan
 
 
-    @can('widget kitchen')
+    {{-- @can('widget kitchen')
         <div class="card mb-4 bg-light  shadow-lg">
             <div class="card-header  text-white">
                 <h5 class="mb-0">Kitchen Order Tickets</h5>
@@ -116,7 +113,7 @@
                 </div>
             </div>
         </div>
-    @endcan
+    @endcan --}}
 
     <style>
         .card {
