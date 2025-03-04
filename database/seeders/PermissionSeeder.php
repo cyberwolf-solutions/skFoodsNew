@@ -88,16 +88,6 @@ class PermissionSeeder extends Seeder {
             ['name' => 'create modifiers', 'guard_name' => 'web'],
             ['name' => 'edit modifiers', 'guard_name' => 'web'],
             ['name' => 'delete modifiers', 'guard_name' => 'web'],
-            ['name' => 'manage rooms', 'guard_name' => 'web'],
-            ['name' => 'create rooms', 'guard_name' => 'web'],
-            ['name' => 'view rooms', 'guard_name' => 'web'],
-            ['name' => 'edit rooms', 'guard_name' => 'web'],
-            ['name' => 'delete rooms', 'guard_name' => 'web'],
-            ['name' => 'manage bookings', 'guard_name' => 'web'],
-            ['name' => 'create bookings', 'guard_name' => 'web'],
-            ['name' => 'view bookings', 'guard_name' => 'web'],
-            ['name' => 'edit bookings', 'guard_name' => 'web'],
-            ['name' => 'delete bookings', 'guard_name' => 'web'],
             ['name' => 'manage customers', 'guard_name' => 'web'],
             ['name' => 'create customers', 'guard_name' => 'web'],
             ['name' => 'view customers', 'guard_name' => 'web'],
@@ -108,7 +98,6 @@ class PermissionSeeder extends Seeder {
             ['name' => 'view orders', 'guard_name' => 'web'],
             ['name' => 'edit orders', 'guard_name' => 'web'],
             ['name' => 'delete orders', 'guard_name' => 'web'],
-            ['name' => 'delete KOT', 'guard_name' => 'web'],
             ['name' => 'manage report', 'guard_name' => 'web'],
             ['name' => 'User report', 'guard_name' => 'web'],
             ['name' => 'Customer report', 'guard_name' => 'web'],
@@ -120,24 +109,12 @@ class PermissionSeeder extends Seeder {
             ['name' => 'Stock report', 'guard_name' => 'web'],
             ['name' => 'DailyStock report', 'guard_name' => 'web'],
             ['name' => 'profitandloss report', 'guard_name' => 'web'],
-           
-
-
-            
-
-
             ['name' => 'manage stock', 'guard_name' => 'web'],
             ['name' => 'manage dailystock', 'guard_name' => 'web'],
             ['name' => 'create dailystock', 'guard_name' => 'web'],
-
-
-         
             ['name' => 'guest widget', 'guard_name' => 'web'],
             ['name' => 'stock widget', 'guard_name' => 'web'],
             ['name' => 'orders widget', 'guard_name' => 'web'],
-           
-
-            ['name' => 'manage waiter', 'guard_name' => 'web'],
 
         ];
 
