@@ -129,7 +129,7 @@
                                 @endcan
                                 @can('manage dailystock')
                                     <li class="nav-item">
-                                        <a href="{{ route('daily-stock.index') }}" class="nav-link">Kitchen</a>
+                                        <a href="{{ route('daily-stock.index') }}" class="nav-link">Consumption</a>
                                     </li>
                                 @endcan
                             </ul>
@@ -268,59 +268,59 @@
                         </a>
                         <div class="collapse menu-dropdown" id="report">
                             <ul class="nav nav-sm flex-column">
-                                @can('manage report')
+                                @can('User report')
                                     <li class="nav-item">
                                         <a href="{{ route('users.ReportsIndex') }}" class="nav-link">User Report</a>
                                     </li>
                                 @endcan
-                                @can('manage report')
+                                @can('Customer report')
                                     <li class="nav-item">
                                         <a href="{{ route('customers.ReportsIndex') }}" class="nav-link">Customer Reports</a>
                                     </li>
                                 @endcan
-                                @can('manage report')
+                                @can('Employee report')
                                     <li class="nav-item">
                                         <a href="{{ route('employees.ReportsIndex') }}" class="nav-link">Employees
                                             Reports</a>
                                     </li>
                                 @endcan
-                                @can('manage report')
+                                @can('Supplier report')
                                     <li class="nav-item">
                                         <a href="{{ route('supplier.ReportsIndex') }}" class="nav-link">Supplier Reports</a>
                                     </li>
                                 @endcan
-                                @can('manage report')
+                                @can('Purchase report')
                                     <li class="nav-item">
                                         <a href="{{ route('purchase.ReportsIndex') }}" class="nav-link">Purchase Reports</a>
                                     </li>
                                 @endcan
-                                @can('manage report')
+                                @can('Product report')
                                     <li class="nav-item">
                                         <a href="{{ route('product.ReportsIndex') }}" class="nav-link">Product Reports</a>
                                     </li>
                                 @endcan
 
 
-                                @can('manage report')
+                                @can('Sales report')
                                     <li class="nav-item">
                                         <a href="{{ route('order.ReportsIndex') }}" class="nav-link">Sales Reports</a>
                                     </li>
                                 @endcan
 
-                                @can('manage report')
+                                @can('Stock report')
                                     <li class="nav-item">
                                         <a href="{{ route('stockreport') }}" class="nav-link">Stock
                                             Reports</a>
                                     </li>
                                 @endcan
-                                @can('manage report')
+                                @can('DailyStock report')
                                     <li class="nav-item">
                                         <a href="{{ route('dailystockreport') }}" class="nav-link">Daily Stock
                                             Reports</a>
                                     </li>
                                 @endcan
 
-                                @can('manage report')
+                                @can('profitandloss report')
                                     <li class="nav-item">
                                         <a href="{{ route('final') }}" class="nav-link">profit and loss
                                             Reports</a>
@@ -353,3 +353,4 @@
 <!-- Left Sidebar End -->
 <!-- Vertical Overlay-->
 <div class="vertical-overlay"></div>
+

@@ -109,12 +109,17 @@ class PermissionSeeder extends Seeder {
             ['name' => 'edit orders', 'guard_name' => 'web'],
             ['name' => 'delete orders', 'guard_name' => 'web'],
             ['name' => 'delete KOT', 'guard_name' => 'web'],
+            ['name' => 'manage report', 'guard_name' => 'web'],
             ['name' => 'User report', 'guard_name' => 'web'],
             ['name' => 'Customer report', 'guard_name' => 'web'],
             ['name' => 'Supplier report', 'guard_name' => 'web'],
             ['name' => 'Purchase report', 'guard_name' => 'web'],
             ['name' => 'Employee report', 'guard_name' => 'web'],
             ['name' => 'Product report', 'guard_name' => 'web'],
+            ['name' => 'Sales report', 'guard_name' => 'web'],
+            ['name' => 'Stock report', 'guard_name' => 'web'],
+            ['name' => 'DailyStock report', 'guard_name' => 'web'],
+            ['name' => 'profitandloss report', 'guard_name' => 'web'],
            
 
 
@@ -149,3 +154,4 @@ class PermissionSeeder extends Seeder {
         }
     }
 }
+
