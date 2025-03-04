@@ -14,7 +14,9 @@
         <div class="row">
             <div class="row my-2 justify-content-center text-center">
                 <img src="{{ asset('storage/' . $settings->logo_dark) }}" class="img-fluid w-25" alt="">
-                <span class="fs-5">sk Foods.</span>
+
+                <span class="fs-5">sk Foods</span>
+
             </div>
             <div class="row justify-content-between mt-5 mb-3">
                 <div class="col">
