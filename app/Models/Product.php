@@ -16,7 +16,7 @@ class Product extends Model {
         'unit_price',
         'image_url',
         'description',
-        'type',
+        // 'type',
         'created_by',
         'updated_by',
         'deleted_by'

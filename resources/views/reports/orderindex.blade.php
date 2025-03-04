@@ -54,7 +54,6 @@
                 <option selected disabled>Select Type</option>
                 <option value="Dining">Dining</option>
                 <option value="TakeAway">TakeAway</option>
-                <option value="RoomDelivery">Room Delivery</option>
             </select>
          
         </div>

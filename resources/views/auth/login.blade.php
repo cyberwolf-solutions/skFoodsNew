@@ -18,7 +18,9 @@
                                         <div class="bg-overlay"></div>
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
-                                               <div class="d-block">
+
+                                                <div class="d-block">
+                                                
                                                     <img src="{{ URL::asset('build/images/logo.png') }}" alt="" height="18" style="height:100px;width:auto">
                                                 </div>
                                             </div>
